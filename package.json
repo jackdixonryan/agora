@@ -1,0 +1,25 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "##About Agora",
+  "main": "customer.js",
+  "dependencies": {
+    "inquirer": "^6.1.0",
+    "inquire": "^0.4.8",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackdixonryan/bamazon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackdixonryan/bamazon/issues"
+  },
+  "homepage": "https://github.com/jackdixonryan/bamazon#readme"
+}

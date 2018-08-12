@@ -138,7 +138,7 @@ function newProduct(){
         let newProductP = parseFloat(queryRes.productPrice);
         let newProductDept = queryRes.productDept;
 
-        connection.query('INSERT INTO `products` (`product_name`, `department_name`, `price`, `stock_quantity`) VALUES ("' + newProductName + '", "' + newProductDept + '", ' + newProductP + ', ' + newProductQ + ')', function(err){
+        connection.query('INSERT INTO `products` (`product_name`, `department_name`, `price`, `stock_quantity`, `product_sales`) VALUES ("' + newProductName + '", "' + newProductDept + '", ' + newProductP + ', ' + newProductQ + ', ' + '0.00)', function(err){
             if (err) throw err;
             console.log('You have added', newProductName, 'to the Agora.');
             mainReplay();

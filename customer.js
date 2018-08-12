@@ -73,7 +73,7 @@ function customer(){
                         let netSales = results[i].product_sales;
 
                         //If there's enough stock that the user can purchase the number of items they want...
-                        if (stock > selInq.quantity){
+                        if (stock >= selInq.quantity){
                             //The stock is locally depleted by the quantity ordered.
                             stock = stock - selInq.quantity;
                             //The net sales is locally incremented by the price of the item in question multiplied by the number the individual ordered.
@@ -158,10 +158,12 @@ function checkout(){
                 for (let m = 0; m < res.length; m++){
                     total += (res[m].price * res[m].quantity_bought);
                 }
-                console.log('Your total is ' + total);
+                console.log('Your total is ' + (total.toFixed(2)));
                 console.log('Thank you for shopping with Agora today.');
                 connection.query('DELETE FROM `myCart`');
                 connection.end();
+            } else {
+                runAgain();
             }
         });
     });

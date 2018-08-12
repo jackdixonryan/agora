@@ -69,7 +69,7 @@ function salesByDept(){
 
                 connection.query('UPDATE `departments` SET `sales` = ' + total + ' WHERE `department_name` = "' + deptChoice + '"', function(err){
                     if (err) throw err;
-                    connection.end();
+                    again();
                 });
             });
         });
@@ -81,7 +81,7 @@ function profitCalc(){
     connection.query('SELECT * FROM `departments`', function(err, res){
         if (err) throw err;
         for (let n = 0; n < res.length; n++){
-            let profit = (res[n].overhead - res[n].sales).toFixed(2);
+            let profit = (res[n].sales - res[n].overhead).toFixed(2);
             connection.query('UPDATE `departments` SET `profit` = ' + profit + ' WHERE `department_name` = "' + res[n].department_name + '"');
         }
     });
@@ -103,6 +103,23 @@ function showTables(){
         console.log('TOTAL OVERHEAD:', totalOverhead.toFixed(2));
         console.log('TOTAL SALES:', totalSales.toFixed(2));
         console.log('NET PROFITS:', netProfit.toFixed(2));
-        connection.end();
+        again();
+    });
+}
+
+function again(){
+    inquire.prompt([
+        {
+            name: 'again',
+            message: 'Continue in supervisory mode?',
+            type: 'confirm'
+        }
+    ]).then(function(supInq){
+        if (supInq.again){
+            main();
+        } else {
+            console.log('Adios.');
+            connection.end();
+        }
     });
 }
